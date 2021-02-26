@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.ibm.rules.studio.model.decisionmodel:DecisionModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:com.ibm.rules.studio.model.decisionmodel="http://com.ibm.rules.studio/model/decisionmodel.ecore">
+  <name>decisionModel</name>
+  <uuid>2406e5f4-7b3e-4ad8-a789-8ee144111ec4</uuid>
+  <locale>en_US</locale>
+  <definition><definitions xmlns="http://www.omg.org/spec/DMN/20180521/MODEL/" id="decisions" name="diagram" namespace="">
+    <extensionElements>
+        <locale xmlns="http://www.ibm.com/spec/ODM/dmn.xsd" id="en_US"/>
+    </extensionElements>
+    <inputData id="node_0" name="Edad">
+        <extensionElements>
+            <initialization xmlns="http://www.ibm.com/spec/ODM/dmn.xsd">
+                <output bomType="java.lang.Long" collection="false" name="Edad"/>
+            </initialization>
+        </extensionElements>
+        <variable id="node_0_ii" name="Edad" typeRef="java.lang.Long"/>
+    </inputData>
+    <decision id="node_1" name="EvaluarEdad">
+        <extensionElements>
+            <ruleset xmlns="http://www.ibm.com/spec/ODM/dmn.xsd" conflictResolution="sequence">
+                <input bomType="java.lang.Long" collection="false" name="Edad"/>
+                <output bomType="java.lang.Boolean" collection="false" name="EvaluarEdad"/>
+                <rule defaultRule="false" href="node_1/Evaluar.drl" kind="BusinessRule" name="Evaluar"/>
+                <rule defaultRule="true" href="node_1/output-default-setting.drl" kind="BusinessRule" name="output-default-setting"/>
+            </ruleset>
+        </extensionElements>
+        <variable id="node_1_ii" name="EvaluarEdad" typeRef="java.lang.Boolean"/>
+        <informationRequirement>
+            <requiredInput href="#node_0"/>
+        </informationRequirement>
+    </decision>
+    <inputData id="node_2" name="Salario">
+        <extensionElements>
+            <initialization xmlns="http://www.ibm.com/spec/ODM/dmn.xsd">
+                <output bomType="java.lang.Double" collection="false" name="Salario"/>
+            </initialization>
+        </extensionElements>
+        <variable id="node_2_ii" name="Salario" typeRef="java.lang.Double"/>
+    </inputData>
+    <decision id="node_3" name="EvaluarSalario">
+        <extensionElements>
+            <ruleset xmlns="http://www.ibm.com/spec/ODM/dmn.xsd" conflictResolution="sequence">
+                <input bomType="java.lang.Double" collection="false" name="Salario"/>
+                <output bomType="java.lang.Boolean" collection="false" name="EvaluarSalario"/>
+            </ruleset>
+        </extensionElements>
+        <variable id="node_3_ii" name="EvaluarSalario" typeRef="java.lang.Boolean"/>
+        <informationRequirement>
+            <requiredInput href="#node_2"/>
+        </informationRequirement>
+    </decision>
+    <decision id="node_4" name="Decision 4">
+        <extensionElements>
+            <ruleset xmlns="http://www.ibm.com/spec/ODM/dmn.xsd" conflictResolution="sequence">
+                <input bomType="java.lang.Boolean" collection="false" name="EvaluarEdad"/>
+                <input bomType="java.lang.Boolean" collection="false" name="EvaluarSalario"/>
+                <output bomType="java.lang.String" collection="false" name="Decision 4"/>
+            </ruleset>
+        </extensionElements>
+        <variable id="node_4_ii" name="Decision 4" typeRef="java.lang.String"/>
+        <informationRequirement>
+            <requiredInput href="#node_1"/>
+        </informationRequirement>
+        <informationRequirement>
+            <requiredInput href="#node_3"/>
+        </informationRequirement>
+    </decision>
+</definitions></definition>
+</com.ibm.rules.studio.model.decisionmodel:DecisionModel>
